@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_short_video"
+        android:icon="@drawable/video_player"
+        android:title="Short Video" />
+
+    <item
+        android:id="@+id/navigation_video"
+        android:icon="@drawable/video"
+        android:title="Video" />
+
+    <item
+        android:id="@+id/navigation_live_tv"
+        android:icon="@drawable/live_tv"
+        android:title="Live TV" />
+
+    <item
+        android:id="@+id/navigation_podcast"
+        android:icon="@drawable/podcast"
+        android:title="Podcast" />
+
+</menu>
