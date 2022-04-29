@@ -12,5 +12,6 @@
     <color name="lightblue">#01327E</color>
     <color name="lightgrey">#F2F2F2</color>
     <color name="menu_color">#5E5E5E</color>
+    <color name="status_bar_color">#9A9999</color>
     <color name="view_color">#ABABAB</color>
 </resources>
