@@ -43,11 +43,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         // add your fragments
         adapter.addFrag(new AllNewsFragment(), "Home");
-        adapter.addFrag(new IplFragment(), "IPL 2022");
-        adapter.addFrag(new NationalNewsFragment(), "India");
-        adapter.addFrag(new NationalNewsFragment(), "Photo");
-        adapter.addFrag(new NationalNewsFragment(), "Video");
-        adapter.addFrag(new NationalNewsFragment(), "Entertainment");
+        adapter.addFrag(new AllNewsFragment(), "IPL 2022");
+        adapter.addFrag(new AllNewsFragment(), "India");
+        adapter.addFrag(new AllNewsFragment(), "Photo");
+        adapter.addFrag(new AllNewsFragment(), "Video");
+        adapter.addFrag(new AllNewsFragment(), "Entertainment");
 
         binding.viewPager.setAdapter(adapter);
 

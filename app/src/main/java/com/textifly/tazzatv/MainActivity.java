@@ -10,12 +10,14 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 
+import com.textifly.tazzatv.Activity.LoginActivity;
 import com.textifly.tazzatv.Adapter.DrawerAdapter;
 import com.textifly.tazzatv.Model.DrawerModel;
 import com.textifly.tazzatv.databinding.ActivityMainBinding;
@@ -45,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
         }
         setDefaultView();
         setDrawerMenu();
+
+        binding.navLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                overridePendingTransition(R.anim.fade_in_animation,R.anim.fade_out_animation);
+            }
+        });
 
         binding.ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
