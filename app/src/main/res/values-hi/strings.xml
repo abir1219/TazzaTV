@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email_phone">ईमेल/फ़ोन</string>
+    <string name="password">पासवर्ड</string>
+    <string name="login">लॉग इन करें</string>
+    <string name="login_with">साथ प्रवेश करना</string>
+    <string name="forget_password">पासवर्ड भूल गया?</string>
+    <string name="skip">छोड़ें</string>
+</resources>

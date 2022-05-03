@@ -36,6 +36,12 @@
 
             </LinearLayout>
 
+            <!--<ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@+id/llMenu"
+                android:src="@drawable/tazzatv_logo" />-->
+
         </RelativeLayout>
 
         <com.google.android.material.tabs.TabLayout
