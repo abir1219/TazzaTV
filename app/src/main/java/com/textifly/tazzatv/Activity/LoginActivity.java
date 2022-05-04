@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 new CustomLanguageDialog(LoginActivity.this, view, new CustomLanguageDialog.OnClickListener() {
                     @Override
                     public void onClick(String lang) {
-                        Toast.makeText(LoginActivity.this,"You Selected : " + lang, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(LoginActivity.this,"You Selected : " + lang, Toast.LENGTH_SHORT).show();
                         setView();
                     }
                 });
@@ -74,11 +74,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void showChangeLanguageBottomSheetDialog() {
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(R.layout.language_setting_bottom);
-        bottomSheetDialog.setCancelable(true);
-
-        bottomSheetDialog.show();
-    }
 }

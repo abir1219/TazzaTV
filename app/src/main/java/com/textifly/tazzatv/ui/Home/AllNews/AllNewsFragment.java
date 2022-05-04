@@ -76,7 +76,7 @@ public class AllNewsFragment extends Fragment {
 
 
     private void getBannerItems() {
-        for (int i = 0; i < modelList.size(); i += ITEM_PER_AD) {
+        for (int i = ITEM_PER_AD; i < modelList.size(); i += ITEM_PER_AD) {
             AdView adView = new AdView(getActivity());
             adView.setAdSize(AdSize.BANNER);
             adView.setAdUnitId(BANNER_AD_ID);
