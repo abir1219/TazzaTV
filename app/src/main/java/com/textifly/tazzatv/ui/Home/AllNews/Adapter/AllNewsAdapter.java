@@ -1,6 +1,7 @@
 package com.textifly.tazzatv.ui.Home.AllNews.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -23,8 +25,9 @@ public class AllNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     List<Object> modelList;
     Context context;
 
-    public static final int item_banner = 1;
-    public static final int item_data = 0;
+    private static final int item_data = 0;
+    private static final int item_banner = 1;
+
 
     public AllNewsAdapter(List<Object> modelList, Context context) {
         this.modelList = modelList;
@@ -35,92 +38,85 @@ public class AllNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         switch (viewType) {
-            case item_data:
-                View dataview = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_layout, parent, false);
-                return new ViewHolder(dataview);
             case item_banner:
+                return new Banneraddviewholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.banner_singlerow, parent, false));
+            case item_data:
             default:
-                View bannerview = LayoutInflater.from(parent.getContext()).inflate(R.layout.banner_singlerow, parent, false);
-                return new Banneraddviewholder(bannerview);
+                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_layout, parent, false));
 
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        //return super.getItemViewType(position);
+        if (position == 0 || modelList.get(position) instanceof AllNewsNewsModel) {
+            return item_data;
+        } else {
+            if (position % AllNewsFragment.ITEM_PER_AD == 0) {
+                return item_banner;
+            } else {
+                return item_data;
+            }
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
+
+        //int viewType = getViewType(position);
         int viewType = getItemViewType(position);
+        Log.d("VIEW_TYPE", "VIEW_TYPE: " + viewType);
         switch (viewType) {
-            case item_data:
-                ViewHolder hldr = (ViewHolder) holder;
-                AllNewsNewsModel model = (AllNewsNewsModel) modelList.get(position);
-                hldr.tvTitle.setText(model.getTitle());
-                Glide.with(context).load(model.getImage()).into(hldr.ivImage);
-                break;
             case item_banner:
+                if (modelList.get(position) instanceof AdView) {
+                    Banneraddviewholder bvh = (Banneraddviewholder) holder;
+                    AdView adView = (AdView) modelList.get(position);
+                    ViewGroup adcardview = (ViewGroup) bvh.itemView;
+
+                    if (adcardview.getChildCount() > 0) {
+                        adcardview.removeAllViews();
+                    }
+
+                    if (adcardview.getParent() != null) {
+                        ((ViewGroup) adView.getParent()).removeView(adView);
+                    }
+
+                    adcardview.addView(adView);
+                }
+                break;
+            case item_data:
             default:
-                Banneraddviewholder bvh = (Banneraddviewholder) holder;
-                AdView adView = (AdView) modelList.get(position);
-
-                ViewGroup adcardview = (ViewGroup) bvh.itemView;
-
-                if (adcardview.getChildCount() > 0)
-                    adcardview.removeAllViews();
-                if (adcardview.getParent() != null)
-                    ((ViewGroup) adView.getParent()).removeView(adView);
-
-                adcardview.addView(adView);
+                if (modelList.get(position) instanceof AllNewsNewsModel) {
+                    ViewHolder hldr = (ViewHolder) holder;
+                    AllNewsNewsModel model = (AllNewsNewsModel) modelList.get(position);
+                    hldr.tvTitle.setText(model.getTitle());
+                    Glide.with(context).load(model.getImage()).into(hldr.ivImage);
+                }
+                break;
         }
     }
 
-    /*@NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_layout,parent,false));
-        switch (viewType) {
-            case item_data:
-                View dataView = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_layout, parent, false);
-                return new ViewHolder(dataView);
-            //break;
-            case item_banner:
-            default:
-                View bannerView = LayoutInflater.from(parent.getContext()).inflate(R.layout.banner_singlerow, parent, false);
-                return new Banneraddviewholder(bannerView);
-            //break;
-        }
-    }*/
-
-    /*@Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        *//*holder.tvTitle.setText(modelList.get(position).getTitle());
-        Glide.with(context).load(modelList.get(position).getImage()).into(holder.ivImage);*//*
-
-        int viewType = getItemViewType(position);
-        switch (viewType) {
-            case item_data:
-                ViewHolder hldr = (ViewHolder) holder;
-                AllNewsNewsModel model = (AllNewsNewsModel) modelList.get(position);
-                hldr.tvTitle.setText(model.getTitle());
-                Glide.with(context).load(model.getImage()).into(hldr.ivImage);
-                break;
-            case item_banner:
-            default:
-
-        }
-    }*/
 
     @Override
     public int getItemCount() {
         return modelList.size();
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-    public int getItemViewType(int position) {
-        if (position % AllNewsFragment.ITEM_PER_ADD == 0) {
+    /*public int getViewType(int position) {
+        Log.d("POSITION","Position: "+position);
+        if (position % AllNewsFragment.ITEM_PER_AD == 0) {
             return item_banner;
         } else {
             return item_data;
         }
-    }
+    }*/
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
@@ -134,8 +130,11 @@ public class AllNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public static class Banneraddviewholder extends RecyclerView.ViewHolder {
+        CardView ad_card_view;
+
         public Banneraddviewholder(@NonNull View itemView) {
             super(itemView);
+            ad_card_view = itemView.findViewById(R.id.ad_card_view);
         }
     }
 }

@@ -6,4 +6,6 @@
     <string name="login_with">साथ प्रवेश करना</string>
     <string name="forget_password">पासवर्ड भूल गया?</string>
     <string name="skip">छोड़ें</string>
+    <string name="change_language">भाषा बदलें</string>
+    <string name="language">हिन्दी</string>
 </resources>

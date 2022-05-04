@@ -36,7 +36,7 @@ public class CustomLanguageDialog {
         LinearLayout llEnglish = mBottomSheetDialog.findViewById(R.id.llEnglish);
         LinearLayout llBengali = mBottomSheetDialog.findViewById(R.id.llBengali);
 
-        if (LanguageHelper.getLanguage(mContext).equalsIgnoreCase("bn")){
+        if (LanguageHelper.getLanguage(mContext).equalsIgnoreCase("hi")){
             tvBengali.setTextColor(mContext.getResources().getColor(R.color.green4));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 tvBengali.setCompoundDrawableTintList(mContext.getColorStateList(R.color.green4));
@@ -67,9 +67,9 @@ public class CustomLanguageDialog {
                 ivEnglish.setVisibility(View.INVISIBLE);
                 mBottomSheetDialog.cancel();
                 //Language Change
-                LanguageHelper.setLocale(mContext, "bn");
+                LanguageHelper.setLocale(mContext, "hi");
                 if (onClickListener != null){
-                    onClickListener.onClick("Bengali");
+                    onClickListener.onClick("Hindi");
                 }
             }
         });

@@ -9,4 +9,6 @@
     <string name="login_with">Login With</string>
     <string name="forget_password">Forget Password?</string>
     <string name="skip">skip</string>
+    <string name="change_language">Change Language</string>
+    <string name="language">English</string>
 </resources>
