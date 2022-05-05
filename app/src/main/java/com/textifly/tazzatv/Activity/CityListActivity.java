@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
 import com.textifly.tazzatv.Adapter.CityAdapter;
+import com.textifly.tazzatv.CustomDialog.CustomLanguageDialog;
 import com.textifly.tazzatv.Model.CityModel;
 import com.textifly.tazzatv.R;
 import com.textifly.tazzatv.databinding.ActivityCityListBinding;
@@ -24,12 +27,15 @@ public class CityListActivity extends AppCompatActivity {
         binding = ActivityCityListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         setRvLayout();
         loadCityList();
+
     }
 
     private void setRvLayout() {
         binding.rvCityList.setLayoutManager(new GridLayoutManager(CityListActivity.this,2));
+        //binding.rvCityList.setLayoutManager(new LinearLayoutManager(CityListActivity.this,LinearLayoutManager.HORIZONTAL,false));
     }
 
     private void loadCityList() {
@@ -48,5 +54,13 @@ public class CityListActivity extends AppCompatActivity {
 
         CityAdapter adapter = new CityAdapter(modelList,CityListActivity.this);
         binding.rvCityList.setAdapter(adapter);
+
+        /*adapter.setListner(new ChooseDialogActivity.onDataRecived() {
+            @Override
+            public void onCallBack(int pos) {
+                String cityName = CityAdapter.cityName;
+
+            }
+        });*/
     }
 }

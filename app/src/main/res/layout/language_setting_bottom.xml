@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:textSize="17sp"
         android:textColor="@color/white"
-        android:text="Language / ভাষা"
+        android:text="Language / भाषा"
         android:drawableLeft="@drawable/ic_language"
         android:drawablePadding="10dp"
         android:drawableTint="@color/white"
