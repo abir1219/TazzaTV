@@ -12,12 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TazzaTV"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Activity.CityListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ChooseDialogActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+
         <activity
             android:name=".Activity.SplashScreenActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,16 +34,10 @@
         </activity>
         <activity
             android:name=".Activity.LoginActivity"
-            android:exported="true" >
-
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

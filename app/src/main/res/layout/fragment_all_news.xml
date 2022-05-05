@@ -10,9 +10,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvBanner"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:cardBackgroundColor="@color/white">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/mobile_news"/>
+
+        </androidx.cardview.widget.CardView>
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
+            android:layout_below="@+id/cvBanner"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:id="@+id/rvAllNews"/>
 
     </RelativeLayout>
